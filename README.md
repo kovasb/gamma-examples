@@ -1,10 +1,9 @@
 # gamma-examples
 
-A Clojure library designed to ... well, that part is up to you.
+WIP. 
 
-## Usage
+Do lein install on [gamma-driver](https://github.com/kovasb/gamma-driver) before running. 
 
-FIXME
 
 ## License
 
