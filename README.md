@@ -1,6 +1,6 @@
 # gamma-examples
 
-Do lein install on gamma-driver before running. 
+Do lein install on [gamma-driver](https://github.com/kovasb/gamma-driver) before running. 
 
 
 ## License
