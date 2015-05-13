@@ -22,9 +22,8 @@
 
 
 (defn example-data []
-  (driver/normalize-data
-    {pos-attribute [[-0.5 -0.5 ][ 0.5 -0.5] [0 0]]
-     color-attribute [[1 0 0 1] [0 1 0 1] [0 0 1 1]]}))
+  {pos-attribute   [[-0.5 -0.5] [0.5 -0.5] [0 0]]
+   color-attribute [[1 0 0 1] [0 1 0 1] [0 0 1 1]]})
 
 
 (defn example-driver []

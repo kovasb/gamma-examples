@@ -25,9 +25,8 @@
 
 
 (defn base-data []
-  (driver/normalize-data
-    {pos-attribute [[0 0.5] [-0.5 -0.5] [0.5 -0.5]]
-     color-attribute [[1 0 0 1] [0 1 0 1] [0 0 1 1]]}))
+  {pos-attribute   [[0 0.5] [-0.5 -0.5] [0.5 -0.5]]
+   color-attribute [[1 0 0 1] [0 1 0 1] [0 0 1 1]]})
 
 (defn ->radians [degrees]
   (/ (* degrees Math/PI) 180))
@@ -45,7 +44,7 @@
     (driver/draw-program
       d
       p
-      (driver/normalize-data {tmatrix triangle-mv-matrix}))))
+      {tmatrix triangle-mv-matrix})))
 
 (defn animate [drawfn stepfn current-value]
   (js/requestAnimationFrame

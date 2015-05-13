@@ -76,12 +76,11 @@
   (mapcat identity triangles))
 
 (defn example-data []
-  (driver/normalize-data
-    {a-position vertex-positions
-     a-color face-colors
-     a-normal normals
-     u-light-color [1 1 1]
-     u-light-direction [-0.5 -1 -1]}))
+  {a-position        vertex-positions
+   a-color           face-colors
+   a-normal          normals
+   u-light-color     [1 1 1]
+   u-light-direction [-0.5 -1 -1]})
 
 
 (defn example-driver []

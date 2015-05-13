@@ -46,18 +46,16 @@
                           [0 1 0]
                           (->radians 45))
         perspective-matrix (get-perspective-matrix 500 500)]
-    (driver/normalize-data
-      {pos-attribute [[0 0.5] [-0.5 -0.5] [0.5 -0.5]]
-       tmatrix       (arrays/float32 triangle-matrix)
-       pmatrix       (arrays/float32 perspective-matrix)})))
+    {pos-attribute [[0 0.5] [-0.5 -0.5] [0.5 -0.5]]
+     tmatrix       triangle-matrix
+     pmatrix       perspective-matrix}))
 
 (defn example-driver []
   (driver/basic-driver
     (.getContext (.getElementById js/document "gl-canvas") "webgl")))
 
 
-(defn draw-example []
+(defn main []
   (let [d (example-driver)
         p (dp/program d (example-program))]
-    (driver/draw-program d p (example-data))
-    {:program p :driver d}))
+    (driver/draw-program d p (example-data))))

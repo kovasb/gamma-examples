@@ -1,0 +1,56 @@
+(ns gamma-examples.texture
+  (:require
+    [gamma-driver.drivers.basic :as driver]
+    [gamma-driver.protocols :as dp]
+    [gamma.program :as p]
+    [gamma.api :as g]))
+
+;;WIP
+
+(defn ->radians [degrees]
+  (/ (* degrees Math/PI) 180))
+
+
+
+(def a-position (g/attribute "a_Position" :vec2))
+
+(def a-tex-coord (g/attribute "a_TexCoord" :vec2))
+
+(def v-tex-coord (g/varying "v_TexCoord" :vec2 :mediump))
+
+(def u-sampler (g/uniform "u_Sampler" :sampler2D))
+
+
+(defn example-program []
+  (p/program
+    {:vertex-shader
+     {(g/gl-position) (g/vec4 a-position 0 1)
+      v-tex-coord     a-tex-coord}
+     :fragment-shader {(g/gl-frag-color) (g/texture2D u-sampler v-tex-coord)}}))
+
+
+(defn example-data [image]
+  {a-position  [[-0.5 0.5] [-0.5 -0.5] [0.5 0.5]
+                [-0.5 -0.5] [0.5 0.5] [0.5 -0.5]]
+   a-tex-coord [[0 1] [0 0] [1 1]
+                [0 0] [1 1] [1 0]]
+   u-sampler   image
+   })
+
+
+(defn example-driver []
+  (let [c (.getContext (.getElementById js/document "gl-canvas") "webgl")]
+    (.enable c (.-DEPTH_TEST c))
+    (.clear c (.-DEPTH_BUFFER_BIT c))
+    (driver/basic-driver c)))
+
+
+
+(defn main []
+  (let [image (js/Image.)
+        d (example-driver)
+        p (dp/program d (example-program))]
+    (aset image "onload"
+          (fn [] (driver/draw-program d p (example-data image))))
+    (aset image "src" "images/clojure-icon.gif")))
+

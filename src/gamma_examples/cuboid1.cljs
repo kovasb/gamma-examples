@@ -49,9 +49,8 @@
 
 
 (defn example-data []
-  (driver/normalize-data
-    {pos-attribute   (mapcat identity (geom/tessellate (base-cuboid)))
-     color-attribute (mapcat identity face-colors)}))
+  {pos-attribute   (mapcat identity (geom/tessellate (base-cuboid)))
+   color-attribute (mapcat identity face-colors)})
 
 
 (defn example-driver []

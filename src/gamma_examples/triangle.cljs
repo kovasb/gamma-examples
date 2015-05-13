@@ -15,8 +15,7 @@
 
 
 (defn example-data []
-  (driver/normalize-data
-    {pos-attribute [[-0.5 -0.5 ][ 0.5 -0.5] [0 0]]}))
+  {pos-attribute [[-0.5 -0.5] [0.5 -0.5] [0 0]]})
 
 (defn example-driver []
   (driver/basic-driver
