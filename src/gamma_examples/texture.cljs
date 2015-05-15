@@ -5,7 +5,7 @@
     [gamma.program :as p]
     [gamma.api :as g]))
 
-;;WIP
+;; WIP/BUSTED
 
 (defn ->radians [degrees]
   (/ (* degrees Math/PI) 180))
@@ -51,6 +51,6 @@
         d (example-driver)
         p (dp/program d (example-program))]
     (aset image "onload"
-          (fn [] (driver/draw-program d p (example-data image))))
+          (fn [] (driver/draw-arrays d p (example-data image))))
     (aset image "src" "images/clojure-icon.gif")))
 

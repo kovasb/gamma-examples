@@ -58,4 +58,4 @@
 (defn main []
   (let [d (example-driver)
         p (dp/program d (example-program))]
-    (driver/draw-program d p (example-data))))
+    (driver/draw-arrays d p (example-data))))

@@ -41,7 +41,7 @@
 
 (defn draw-fn [d p]
   (fn [triangle-mv-matrix]
-    (driver/draw-program
+    (driver/draw-arrays
       d
       p
       {tmatrix triangle-mv-matrix})))
