@@ -29,3 +29,36 @@
       (dp/program d (example-program))
       (example-data))))
 
+(comment
+  (with-out-str
+   (fipp.engine/pprint-document
+     '[:group
+       ([:group
+         [:group
+          "("
+          ("f" " - "
+            [:group "(" ("f" " + " "1.0") ")"]) ")"] ";"])]
+     {:width 80}))
+
+  (do (def x
+     (with-out-str
+       (fipp.engine/pprint-document
+         '[:group
+           "a"
+           ]
+         {:width 80})))
+      "asdf")
+  (fipp.engine/pprint-document
+    '[:group
+      "a"
+      ]
+    {:width 80})
+
+
+  (with-out-str
+    (fipp.clojure/pprint '(let [foo "abc 123"
+                               bar {:x 1 :y 2 :z 3}]
+                           (do-stuff foo (assoc bar :w 4)))
+                        {:width 40}))
+
+  )

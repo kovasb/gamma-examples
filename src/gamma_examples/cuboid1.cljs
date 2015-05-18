@@ -4,7 +4,6 @@
     [gamma-driver.protocols :as dp]
     [gamma.program :as p]
     [gamma.api :as g]
-    [gamma.webgl :as webgl]
     [thi.ng.geom.core :as geom]
     [thi.ng.geom.core.matrix :as mat :refer [M44]]
     [thi.ng.geom.webgl.arrays :as arrays]
