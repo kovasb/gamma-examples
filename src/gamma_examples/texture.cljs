@@ -34,7 +34,10 @@
                 [-0.5 -0.5] [0.5 0.5] [0.5 -0.5]]
    a-tex-coord [[0 1] [0 0] [1 1]
                 [0 0] [1 1] [1 0]]
-   u-sampler   image
+   u-sampler   {:data     image
+                :unpack   {:flip-y true}
+                :filter   {:min :linear :mag :nearest}
+                :id       0}
    })
 
 
@@ -52,5 +55,4 @@
         p (dp/program d (example-program))]
     (aset image "onload"
           (fn [] (driver/draw-arrays d p (example-data image))))
-    (aset image "src" "images/clojure-icon.gif")))
-
+    (aset image "src" "nehe.png")))
