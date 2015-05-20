@@ -2,9 +2,11 @@
 
 [![Join the chat at https://gitter.im/kovasb/gamma](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kovasb/gamma?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-WIP. 
+Clone the repo. 
 
-Do lein install on [gamma-driver](https://github.com/kovasb/gamma-driver) before running. 
+Run scripts/build.clj and scripts/repl.clj to build and get a repl. 
+
+From the repl, use require and in-ns to move into example namespaces. Examples are generally run with (main)
 
 
 ## License
