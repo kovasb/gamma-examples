@@ -6,6 +6,6 @@
   :dependencies [[org.clojure/clojure "1.7.0-beta2"]
                  [org.clojure/clojurescript "0.0-3292"]
                  [kovasb/gamma "0.0-135"]
-                 [kovasb/gamma-driver "0.0-34-1-g3287**DIRTY**"]
+                 [kovasb/gamma-driver "0.0-34-13-g4787**DIRTY**"]
                  [thi.ng/geom "0.0-715"]]
   :plugins [[org.clojars.cvillecsteele/lein-git-version "1.0.0"]])
