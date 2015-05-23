@@ -1,7 +1,7 @@
 (ns gamma-examples.triangle
   (:require [gamma.api :as g]
-            [gamma-driver.api :as gd]
             [gamma.program :as p]
+            [gamma-driver.api :as gd]
             [gamma-driver.drivers.basic :as driver]
             [goog.dom :as gdom]
             [goog.webgl :as ggl]))
@@ -31,20 +31,3 @@
       (gd/bind driver program data)
       {})))
 
-(comment
-  (def driver (example-driver))
-  (def program (example-program))
-  (def data (example-data))
-
-  (def b1 (gd/bind driver program data))
-
-  (@(:input-state driver) program)
-
-  (gd/draw-arrays driver program {})
-
-
-
-  (:input-state driver)
-
-
-  )

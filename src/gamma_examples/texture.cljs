@@ -1,9 +1,9 @@
 (ns gamma-examples.texture
   (:require
-    [gamma-driver.drivers.basic :as driver]
-    [gamma-driver.protocols :as dp]
     [gamma.program :as p]
-    [gamma.api :as g]))
+    [gamma.api :as g]
+    [gamma-driver.api :as gd]
+    [gamma-driver.drivers.basic :as driver]))
 
 ;; WIP/BUSTED
 
@@ -52,7 +52,10 @@
 (defn main []
   (let [image (js/Image.)
         d (example-driver)
-        p (dp/program d (example-program))]
+        p (example-program)]
     (aset image "onload"
-          (fn [] (driver/draw-arrays d p (example-data image))))
+          (fn [] (gd/draw-arrays
+                   d
+                   (gd/bind d p (example-data image))
+                   {})))
     (aset image "src" "nehe.png")))

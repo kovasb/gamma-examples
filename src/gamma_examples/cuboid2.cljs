@@ -1,7 +1,7 @@
 (ns gamma-examples.cuboid2
   (:require
+    [gamma-driver.api :as gd]
     [gamma-driver.drivers.basic :as driver]
-    [gamma-driver.protocols :as dp]
     [gamma.program :as p]
     [gamma.api :as g]
     [thi.ng.geom.core :as geom]
@@ -91,10 +91,13 @@
 
 
 (defn main []
-  (let [d (example-driver)
-        p (dp/program d (example-program))]
-    (driver/draw-arrays d p (example-data))))
-
+  (let [driver (example-driver)
+        program (example-program)
+        data (example-data)]
+    (gd/draw-arrays
+      driver
+      (gd/bind driver program data)
+      {})))
 
 
 
