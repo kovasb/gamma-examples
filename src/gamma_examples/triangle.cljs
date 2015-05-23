@@ -1,8 +1,8 @@
 (ns gamma-examples.triangle
   (:require [gamma.api :as g]
             [gamma.program :as p]
+            [gamma-driver.api :as gd]
             [gamma-driver.drivers.basic :as driver]
-            [gamma-driver.protocols :as dp]
             [goog.dom :as gdom]
             [goog.webgl :as ggl]))
 
@@ -23,9 +23,11 @@
 
 
 (defn main []
-  (let [d (example-driver)]
-    (driver/draw-arrays
-      d
-      (dp/program d (example-program))
-      (example-data))))
+  (let [driver (example-driver)
+        program (example-program)
+        data (example-data)]
+    (gd/draw-arrays
+      driver
+      (gd/bind driver program data)
+      {})))
 

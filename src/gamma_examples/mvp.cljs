@@ -1,9 +1,9 @@
 (ns gamma-examples.mvp
   (:require
-    [gamma-driver.drivers.basic :as driver]
-    [gamma-driver.protocols :as dp]
     [gamma.program :as p]
     [gamma.api :as g]
+    [gamma-driver.api :as gd]
+    [gamma-driver.drivers.basic :as driver]
     [thi.ng.geom.core :as geom]
     [thi.ng.geom.core.matrix :as mat :refer [M44]]
     [thi.ng.geom.webgl.arrays :as arrays]
@@ -55,6 +55,11 @@
 
 
 (defn main []
-  (let [d (example-driver)
-        p (dp/program d (example-program))]
-    (driver/draw-arrays d p (example-data))))
+  (let [driver (example-driver)
+        program (example-program)
+        data (example-data)]
+    (gd/draw-arrays
+      driver
+      (gd/bind driver program data)
+      {})))
+

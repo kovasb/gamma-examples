@@ -1,9 +1,9 @@
 (ns gamma-examples.animate
   (:require
-    [gamma-driver.drivers.basic :as driver]
-    [gamma-driver.protocols :as dp]
     [gamma.program :as p]
     [gamma.api :as g]
+    [gamma-driver.api :as gd]
+    [gamma-driver.drivers.basic :as driver]
     [thi.ng.geom.core :as geom]
     [thi.ng.geom.core.matrix :as mat :refer [M44]]))
 
@@ -41,10 +41,10 @@
 
 (defn draw-fn [d p]
   (fn [triangle-mv-matrix]
-    (driver/draw-arrays
+    (gd/draw-arrays
       d
-      p
-      {tmatrix triangle-mv-matrix})))
+      (gd/bind d p {tmatrix triangle-mv-matrix})
+      {})))
 
 (defn animate [drawfn stepfn current-value]
   (js/requestAnimationFrame
@@ -56,9 +56,9 @@
 
 (defn main []
   (let [d (example-driver)
-        p (dp/program d (example-program))
+        p (gd/program d (example-program))
         base-data (base-data)]
-    (driver/bind d p base-data)
+    (gd/bind d p base-data)
     (animate
       (draw-fn d p)
       #(rotate % 1)
