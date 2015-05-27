@@ -31,3 +31,29 @@
       (gd/bind driver program data)
       {})))
 
+(comment
+  (def driver (example-driver))
+  (def program (example-program))
+  (def data (example-data))
+
+  (gd/draw-arrays
+    driver
+    (gd/bind driver program data)
+    {:count 3})
+
+  (gd/bind driver program data)
+
+  (gd/draw-arrays (:gl driver) program {:count 3} nil)
+
+  (gd/draw-arrays
+    (:gl driver)
+    program
+    {:count 3} nil)
+
+  (when-let [ext (.getExtension
+                   (:gl driver) "GLI_frame_terminator")]
+    ;; Useful for WebGL inspector until we have Gamma-Inspector
+    (.frameTerminator ext))
+
+
+  )
