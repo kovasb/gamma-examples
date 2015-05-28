@@ -26,4 +26,7 @@
   (require 'gamma-examples.animate)
   (in-ns 'gamma-examples.animate)
   (main)
+  (require 'gamma-examples.learnwebgl.lesson11)
+  (in-ns 'gamma-examples.learnwebgl.lesson11)
+  (main)
   )

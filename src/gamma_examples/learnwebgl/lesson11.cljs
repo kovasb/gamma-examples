@@ -110,10 +110,10 @@
     {u-p-matrix           p
      u-mv-matrix          mv
      u-n-matrix           (get-normal-matrix mv)
-     u-ambient-color      [0 0 0]
-     u-alpha              1
-     u-lighting-direction [-0.25 0.25 1]
-     u-directional-color  [0.8 0.8 0.8]
+     u-ambient-color      {:data [0 0 0] :immutable? true}
+     u-alpha              {:data 1 :immutable? true}
+     u-lighting-direction {:data [-0.25 0.25 1] :immutable? true}
+     u-directional-color  {:data [0.8 0.8 0.8] :immutable? true}
      u-sampler            texture
      u-use-lighting       use-lighting?
      a-position           vertices
@@ -209,7 +209,7 @@
                             :count      (count indices)
                             :immutable? true})))
 
-(defn main [gl node]
+(defn run [gl node]
   (let [width   (.-clientWidth node)
         height  (.-clientHeight node)
         driver  (driver/basic-driver gl)
@@ -235,22 +235,15 @@
       (aset image "src" "moon.gif"))))
 
 
+(defn main []
+  (let [node(.getElementById js/document "gl-canvas")
+        gl (.getContext node "webgl")]
+    (run gl node)))
+
+
 (comment
-
-  (defn example-driver []
-    (driver/basic-driver
-      (.getContext (.getElementById js/document "gl-canvas") "webgl")))
-
-
-
-  (def node (.getElementById js/document "gl-canvas"))
-  (def gl (.getContext node "webgl"))
-  (main gl node)
-
   (when-let [ext (.getExtension
                    gl "GLI_frame_terminator")]
     ;; Useful for WebGL inspector until we have Gamma-Inspector
     (.frameTerminator ext))
-
-
   )
